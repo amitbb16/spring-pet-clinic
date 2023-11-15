@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment                                          # 1
+metadata:
+  name: petclinic
+  labels:
+    app: petclinic
+spec:
+  selector:
+    matchLabels:
+      app: petclinic
+  replicas: 2                                             # 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate                                   # 3
+    rollingUpdate: 
+      maxUnavailable: 1                                   # 4
+      maxSurge: 1                                         # 5
+  template:
+    metadata:
+      labels:
+        app: petclinic                                  # 6
+    spec:
+    #   volumes:
+    #     - name: datastore
+    #       persistentVolumeClaim:
+    #         claimName: frontend-fast-replicated
+      containers:
+        - image: amitbb16/petclinic:v1
+          imagePullPolicy: IfNotPresent                         # 7
+          name: petclinic
+          ports:
+            - containerPort: 80
+          # volumeMounts:
+          #   - mountPath: /var/lib/sql
+          #     name: datastore
+          # env:
+          #   - name: DB_USER_NAME
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: db-secrets
+          #         key: DB_USER_NAME
+          #         optional: false # same as default; "mysecret" must exist
+          #   - name: DB_PASSWORD
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: db-secrets
+          #         key: DB_PASSWORD
+          #         optional: false # same as default; "mysecret" must exist
+          #   - name: DB_HOST
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: db-configs
+          #         key: database_host
+          #   - name: DB_NAME
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: db-configs
+          #         key: database_name
