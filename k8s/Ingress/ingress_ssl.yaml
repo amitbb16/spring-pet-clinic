@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: petclinic
   annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/issuer: "letsencrypt-prod"
 spec:
@@ -21,4 +22,4 @@ spec:
           service:
             name: petclinic-lb
             port:
-              number: 80
+              number: 8080

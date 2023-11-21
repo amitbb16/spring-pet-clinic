@@ -29,7 +29,7 @@ spec:
           imagePullPolicy: IfNotPresent                         # 7
           name: petclinic
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           # volumeMounts:
           #   - mountPath: /var/lib/sql
           #     name: datastore
