@@ -3,7 +3,7 @@ kind: Service              # 1
 metadata:
   name: petclinic-lb
 spec: 
-  type: LoadBalancer
+#   type: LoadBalancer
   ports:
   - port: 80               # 3
     protocol: TCP          # 4
