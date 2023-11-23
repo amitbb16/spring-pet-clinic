@@ -33,26 +33,26 @@ spec:
           # volumeMounts:
           #   - mountPath: /var/lib/sql
           #     name: datastore
-          # env:
-          #   - name: DB_USER_NAME
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: db-secrets
-          #         key: DB_USER_NAME
-          #         optional: false # same as default; "mysecret" must exist
-          #   - name: DB_PASSWORD
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: db-secrets
-          #         key: DB_PASSWORD
-          #         optional: false # same as default; "mysecret" must exist
-          #   - name: DB_HOST
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: db-configs
-          #         key: database_host
-          #   - name: DB_NAME
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: db-configs
-          #         key: database_name
+          env:
+            - name: DB_USER_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_USER_NAME
+                  optional: false # same as default; "mysecret" must exist
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: DB_PASSWORD
+                  optional: false # same as default; "mysecret" must exist
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: db-configs
+                  key: database_host
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: db-configs
+                  key: database_name
