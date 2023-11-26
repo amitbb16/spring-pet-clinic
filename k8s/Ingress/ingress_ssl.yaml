@@ -10,7 +10,7 @@ spec:
   tls:
   - hosts:
     - 34.29.234.122.sslip.io
-    secretName:  34.29.234.122.sslip.i
+    secretName:  34.29.234.122.sslip.io
   rules:
   - host: 34.29.234.122.sslip.io
     http:
